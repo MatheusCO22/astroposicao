@@ -19,19 +19,11 @@ class Star:
         self.ra = ra
         self.dec = dec
         self.name = name
-    
+
               #deg  min  seg
-antares = Star([16, 29, 24.98],
-              [-26, -25, -58.4],
-              "Antares")
-
-rigil_k = Star([14, 39, 28.42],
-               [-60, -49, -1.2],
-               "Rigil Kentaurus")
-
-vega = Star([18, 37, 45.3],
-            [38, 48, 28.3],
-            "Vega")
+antares = Star([16, 29, 24.98], [-26, -25, -58.4], "Antares")
+rigil_k = Star([14, 39, 28.42], [-60, -49, -1.2], "Rigil Kentaurus")
+vega = Star([18, 37, 45.3], [38, 48, 28.3], "Vega")
 
 arr_stars = [antares, rigil_k, vega]
 
