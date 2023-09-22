@@ -2,6 +2,13 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
+def trim_all_columns(df):
+    """
+    Trim whitespace from ends of each value across all series in dataframe
+    """
+    trim_strings = lambda x: x.strip() if isinstance(x, str) else x
+    return df.map(trim_strings)
+
 with open('./catalog.html') as file:
     soup = BeautifulSoup(file, 'html.parser')
 
@@ -28,8 +35,14 @@ for row in table.tbody.find_all('tr'):
                         ignore_index = True)
 
 #print(df.head())
-print(df.info())
 
-df['Distance'].astype('float')
+df = trim_all_columns(df)
+
+#df['Number'] = df['Number'].astype(float)
+
+df = df.astype({"Number": int, "Name": str, "Identifier": str, "Constellation": str, "Distance": float,
+                "RAJ2000": str, "DECJ2000": str})
+
+#df[["Number", "Distance"]] = df[["Number", "Distance"]].apply(pd.to_numeric)
 
 print(df.info())
