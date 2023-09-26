@@ -5,7 +5,7 @@ import convertion
 import stars
 
 stars_arr = stars.get_stars_arr()
-estrela = stars_arr[42]
+estrela = stars_arr[3]
 
 ra_deg = convertion.horario_to_decimal(estrela.ra)
 dec_deg = convertion.sexagesimal_to_decimal(estrela.dec)
