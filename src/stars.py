@@ -1,9 +1,11 @@
 import tablereader
 
 class Star:
-    def __init__(self, name, identifier, constellation, distance, ra, dec):
+    def __init__(self, name, identifier, constellation, Vmagnitude, Amagnitude, distance, ra, dec):
         self.name = name
         self.identifier = identifier
+        self.Vmagnitude = Vmagnitude
+        self.Amagnitude = Amagnitude
         self.constellation = constellation
         self.distance = distance
         self.ra = ra
@@ -29,16 +31,13 @@ for i in df.index:
     name = df["Name"][i]
     identifier = df["Identifier"][i]
     constellation = df["Constellation"][i]
+    Vmagnitude = df["VMagnitude"][i]
+    Amagnitude = df["AMagnitude"][i]
     distance = df["Distance"][i]
     ra = df["RAJ2000"][i]
     dec = df["DECJ2000"][i]
 
     parsed_ra, parsed_dec = parse_radec(ra, dec)
 
-    star = Star(name, identifier, constellation, distance, parsed_ra, parsed_dec)
+    star = Star(name, identifier, constellation, Vmagnitude, Amagnitude, distance, parsed_ra, parsed_dec)
     stars_arr.append(star)
-
-#print("NAME:",stars_arr[i].name)
-#print("DISTANCE:", stars_arr[i].distance)
-#print("RA:", stars_arr[i].ra[0], stars_arr[i].ra[1], stars_arr[i].ra[2])
-#print("DEC:", stars_arr[i].dec[0], stars_arr[i].dec[1], stars_arr[i].dec[2])
